@@ -58,6 +58,6 @@ class HomeController extends Controller
 
         $posts = Post::wherePostType('post')->wherePostStatus('publish')->paginate(5);
 
-        return view(Settings::active_theme('page/home'), compact('posts','hashids'));
+        return view('newfront.home.', compact('posts','hashids'));
     }
 }
