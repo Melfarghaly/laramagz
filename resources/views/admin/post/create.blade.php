@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="titlePost">{{ __('Title') }}</label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
+                            <input type="text" required name="title" class="form-control @error('title') is-invalid @enderror"
                                    id="titlePost" placeholder="Enter Title" onkeyup="typeUrl()" value="{{ old('title') }}" autofocus>
                             @error('title')
                             <div class="invalid-feedback">
@@ -30,7 +30,7 @@
                                 </a>
                             </p>
                             <div class="collapse @error('slug')) show @enderror" id="collapseSlug">
-                                <input type="text" name="slug"
+                                <input type="text" name="slug" required
                                        class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" id="slugPost"
                                        placeholder="Enter Slug" value="{{ old('slug') }}">
                                 @error('slug')

@@ -71,7 +71,7 @@ class ArticleController extends Controller
         SEOTools::jsonLd()->setUrl(Settings::get('siteurl'));
         SEOTools::jsonLd()->addImage($image);
 
-        return view(Settings::active_theme('page/posts'), compact('posts','hashids'));
+        return view('newfront.blog', compact('posts','hashids'));
     }
 
     /**
@@ -197,7 +197,7 @@ class ArticleController extends Controller
         SEOTools::jsonLd()->setUrl(url("/news/" . $post->post_name));
         SEOTools::jsonLd()->addImage($image);
 
-        return view(Settings::active_theme('page/single'), compact(
+        return view('newfront.single_blog', compact(
             'post', 'tags', 'term_taxonomy', 'hashids', 'countRelatedPost'
         ));
     }

@@ -57,7 +57,7 @@ class HomeController extends Controller
         SEOTools::jsonLd()->addImage($image);
 
         $posts = Post::wherePostType('post')->wherePostStatus('publish')->paginate(5);
-
-        return view('newfront.home.', compact('posts','hashids'));
+        //dd($posts);
+        return view('newfront.home', compact('posts','hashids'));
     }
 }

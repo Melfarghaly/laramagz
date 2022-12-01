@@ -63,7 +63,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $categories =Term::select('id','name')->category()->pluck('name','id');
+        return view('admin.post.create',compact('categories'));
     }
 
     /**

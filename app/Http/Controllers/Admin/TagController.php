@@ -69,7 +69,7 @@ class TagController extends Controller
     public function store(Slug $slug)
     {
         $validator = Validator::make(request()->all(), [
-            'name' => 'required|min:3|regex:/^[a-zA-Z0-9 ]+$/'
+            'name' => 'required|min:3'
         ]);
 
         if ($validator->fails()) {

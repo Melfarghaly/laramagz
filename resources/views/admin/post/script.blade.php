@@ -21,6 +21,7 @@ $(function () {
             processResults: function(data) {
                 return {
                     results: data.map(function(item) {
+                        debugger;
                         return {
                             id: item.id,
                             text: item.name
@@ -40,7 +41,8 @@ $(function () {
             }
         },
         escapeMarkup: function(m) {
-            return m.match(/[a-zA-Z0-9 ]+/g);
+            //return m.match(/[a-zA-Z0-9 ]+/g);
+            return m;
         }
     });
 
@@ -72,7 +74,7 @@ $(function () {
             }
         },
         escapeMarkup: function(m) {
-            return m.match(/[a-zA-Z0-9 ]+/g);
+            return m; //m.match(/[a-zA-Z0-9 ]+/g);
         }
     });
 

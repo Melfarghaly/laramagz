@@ -17,11 +17,13 @@ body {
     font-weight: normal;
     font-style: normal
 }
-.btn-site{
+
+.btn-site {
     background: #8D9F2D;
     border: 1px solid #707070;
     color: #fff;
 }
+
 .side-menu {
     background-color: #8D9F2D;
     border-radius: 5px;
@@ -5542,4 +5544,17 @@ h1, h2, h3, h4, h5, h6 {
 .blog_part .single-home-blog .card ul li span {
     margin-left: 10px;
     font-size: 12px
+}
+
+.single-video-play {
+    top: 26%;
+    right: 45%;
+}
+
+/*media mobile*/
+@media (max-width: 576px) {
+    .single-video-play {
+        top: 5%;
+        right: 45%;
+    }
 }
