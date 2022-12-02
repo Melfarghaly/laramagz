@@ -1,0 +1,47 @@
+{
+    "name": "retenvi/laravel-share",
+    "description": "Package for Laravel to generate social share links for Retenvi.",
+    "keywords": [
+        "laravel",
+        "share",
+        "social links",
+        "social share links"
+    ],
+    "homepage": "https://github.com/gofatoni/laravel-share",
+    "license": "MIT",
+    "authors": [
+    	{
+            "name": "Retenvi",
+            "email": "retenviteam@gmail.com",
+            "homepage": "https://retenvi.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Joren Van Hocht",
+            "email": "joren@codeswitch.be",
+            "homepage": "https://codeswitch.be",
+            "role" : "Original Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Retenvi\\Share\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Retenvi\\Share\\Providers\\ShareServiceProvider"
+            ],
+            "aliases": {
+                "Share": "Retenvi\\Share\\ShareFacade"
+            }
+        }
+    }
+}
