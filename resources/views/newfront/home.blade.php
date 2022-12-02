@@ -1,6 +1,8 @@
 @extends('layouts.newApp')
 @section('content')
-
+<?php
+use Alkoumi\LaravelHijriDate\Hijri;
+?>
 <!-- breadcrumb-start -->
 <section class="breadcrumb breadcrumb_bg banner-bg-1 overlay2 ptb200" style="min-height: 600px">
     <div class="container">
@@ -39,7 +41,9 @@
             <div class="col-xl-9 col-md-9">
                 <div class="single-review">
                     <h2> {{ $posts_news[sizeof($posts_news)-1]->post_title ?? ''}}  </h2>
-                    <p> {{ $posts_news[sizeof($posts_news)-1]->created_at ?? ''}}  </p>
+                    <p>
+                        {{ Hijri::Date('j F Y',$posts_news[sizeof($posts_news)-1]->created_at) }}  هـ
+                    </p>
                     <p>
                         {!! $posts_news[sizeof($posts_news)-1]->post_summary ?? ''!!}
                     </p>
@@ -60,7 +64,9 @@
                             <div class="col-xl-6 col-md-6">
                                 <div class="single-review">
                                     <h4>{{ $item->post_title ?? ''}} </h4>
-                                    <p> {{ $item->created_at ?? ''}}   </p>
+                                    <p>
+                                        {{ Hijri::Date('j F Y',$item->created_at) }}  هـ
+                                    </p>
                                     <p>
                                         {!! $item->post_summary ?? '' !!}
                                     </p>
@@ -116,7 +122,9 @@
             <div class="col-xl-9 col-md-9">
                 <div class="single-review">
                     <h2>{{ $posts_videos[sizeof($posts_videos)-1]->post_title ?? ''}}</h2>
-                    <p>{{ $posts_videos[sizeof($posts_videos)-1]->created_at ?? ''}}   </p>
+                    <p>
+                        {{ Hijri::Date('j F Y',$posts_videos[sizeof($posts_videos)-1]->created_at ) }}  هـ
+                    </p>
                     <p>
                         {!! $posts_videos[sizeof($posts_videos)-1]->post_summary ?? ''!!}
                     </p>
@@ -135,7 +143,9 @@
                             <div class="col-xl-6 col-md-6">
                                 <div class="single-review">
                                   <a href="/blog/{{ $item->slug }}">  <h4>{{ $item->post_title }}   </h4></a>
-                                    <p>{{ $item->created_at }}   </p>
+                                    <p>
+                                        {{ Hijri::Date('j F Y',$item->created_at) }}  هـ
+                                    </p>
                                     <p>
                                         {!! $item->post_summary ?? '' !!}
                                     </p>
@@ -203,7 +213,8 @@
                     <div class="about-info-text">
                         <a href="{{ Settings::getRoutePost($row) }}"> <h3>{{ $row->post_title }}  </h3></a>
                         <p>
-                            {{ $row->created_at }}
+
+                            {{ Hijri::Date('j F Y',$row->created_at) }}  هـ
                         </p>
                         <p>
                            {!! $row->post_summary !!}

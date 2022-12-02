@@ -64,7 +64,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make(request()->all(), [
-            'file' => 'required|image',
+            'file' => 'required',
         ])->validate();
 
         $filename = '';
@@ -76,11 +76,11 @@ class GalleryController extends Controller
             $file0        = explode('.', $file);
             $filename     = head($file0);
             $mimetype     = request()->file->getClientMimeType();
-            $imagedetails = getimagesize(request('file'));
-            $width        = $imagedetails[0];
-            $height       = $imagedetails[1];
+           // $imagedetails = getimagesize(request('file'));
+           // $width        = $imagedetails[0];
+           // $height       = $imagedetails[1];
 
-            request()->file->storeAs('images', $file, 'public');
+            request()->file->storeAs('pdf', $file, 'public');
 
             $url = $file;
 
@@ -88,8 +88,8 @@ class GalleryController extends Controller
                 'file'           => $file,
                 'type'           => request()->file->extension(),
                 'size'           => request()->file->getSize(),
-                'dimension'      => $width . 'x' . $height,
-                'attr_image_alt' => '',
+               // 'dimension'      => $width . 'x' . $height,
+                //'attr_image_alt' => '',
             ];
 
             $json = json_encode($meta);
@@ -147,7 +147,7 @@ class GalleryController extends Controller
     {
         $gallery     = Post::find($id);
         $meta        = json_decode($gallery->post_image_meta, true);
-        $update_meta = Arr::set($meta, 'attr_image_alt', strip_tags(request('alt_text')));
+        $update_meta = Arr::set($meta, 'author', strip_tags(request('alt_text')));
         $newmeta     = json_encode($update_meta);
 
         $data = [

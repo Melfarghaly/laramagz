@@ -33,10 +33,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="alt_text">{{ __('Alternative Text') }}</label>
+                        <label for="alt_text">{{ __('Author') }}</label>
                         <input type="text" name="alt_text"
                             class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" id="alt_text"
-                            placeholder="Enter alternative text" value="{{ $meta->attr_image_alt }}">
+                            placeholder="Enter author of book" value="{{ $meta->author ?? '' }}">
                         @if ($errors->has('alt_text'))
                         <div class="invalid-feedback">
                             {{ $errors->first('alt_text') }}
@@ -44,7 +44,7 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group hide" style="display:none">
                         <label for="caption">{{ __('Caption') }}</label>
                         <input type="text" name="caption"
                             class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}" id="caption"
@@ -96,7 +96,7 @@
                     {{ __('File size') }}: <strong>{{ $meta->size }}</strong>
                 </div>
                 <div class="form-group">
-                    {{ __('Dimension') }}: <strong>{{ $meta->dimension }}</strong>
+                    {{ __('Dimension') }}: <strong>{{ $meta->dimension ?? '' }}</strong>
                 </div>
             </div>
         </div>

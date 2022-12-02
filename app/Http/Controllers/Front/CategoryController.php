@@ -34,6 +34,7 @@ class CategoryController extends Controller
      */
     public function index(Term $term)
     {
+
         $term_taxonomy_id = $term->taxonomy->id;
         $termTaxonomy = TermTaxonomy::find($term_taxonomy_id);
         $paginate_posts = $termTaxonomy->post()->latest()->paginate(8);
@@ -62,7 +63,7 @@ class CategoryController extends Controller
         SEOTools::jsonLd()->setUrl(Settings::get('siteurl'));
         SEOTools::jsonLd()->addImage($image);
 
-        return view(Settings::active_theme('page/category'), compact(
+        return view('newfront.category', compact(
             'term', 'paginate_posts', 'hashids'
         ));
     }

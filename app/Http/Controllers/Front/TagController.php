@@ -40,7 +40,7 @@ class TagController extends Controller
         $term_taxonomy_id = $term->taxonomy->id;
         $termTaxonomy = TermTaxonomy::find($term_taxonomy_id);
 
-        $posts = Post::wherePostType('post');
+        $posts = Post::wherePostType('post')->limit(5);
 
         $paginate = $termTaxonomy->post()->paginate(8);
 
@@ -68,10 +68,20 @@ class TagController extends Controller
         SEOTools::jsonLd()->setType('WebPage');
         SEOTools::jsonLd()->setUrl(Settings::get('siteurl'));
         SEOTools::jsonLd()->addImage($image);
+        $paginate_posts=$paginate;
+        if($term->slug=='mktb-alktb-oalmkhtotat'){
+            $books = Post::wherePostType('gallery')->get();
+            $termTaxonomy=TermTaxonomy::orderBy('id','desc')->first();
+            $paginate_posts = $termTaxonomy->post()->latest()->paginate(8);
 
-        return view(Settings::active_theme('page/tag'), compact(
+            return view('newfront.pdfs', compact(
+                'term', 'paginate_posts', 'hashids','books','posts'
+            ));
+        }
+        return view('newfront.category', compact(
             'term',
             'termTaxonomy',
+            'paginate_posts',
             'paginate',
             'hashids'
         ));

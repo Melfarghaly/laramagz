@@ -41,4 +41,5 @@ class TermTaxonomy extends Model
     {
         return $this->belongsToMany('App\Models\Post', 'term_relationships','term_taxonomy_id','post_id')->withTimestamps();
     }
+
 }
