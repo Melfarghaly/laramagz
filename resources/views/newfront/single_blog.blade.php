@@ -1,5 +1,8 @@
 @extends('layouts.newApp')
 @section('content')
+<?php
+use Alkoumi\LaravelHijriDate\Hijri;
+?>
 <!-- about start -->
 <div class="about-area mt-4">
     <div class="container">
@@ -24,12 +27,7 @@
                     </article>
                     <div class="sharing">
                         <div class="title"><i class="ion-android-share-alt"></i> {{ __('Sharing is caring') }}</div>
-                        {!! Share::sendTo('laramagz', null, [], '<ul class="social">','</ul>')
-                        ->facebook()
-                        ->twitter()
-                        ->linkedin()
-                        ->whatsapp()
-                         ->telegram()!!}
+
                     </div>
                 </div>
             </div>
@@ -48,7 +46,9 @@
                                     <h4><a href="{{ Settings::getRoutePost($relpost) }}">{{ $relpost->post_title }}</a></h4>
                                 </a>
 
-                                <p>{{ $relpost->created_at->format('F d, Y') }}</p>
+                                <p>
+                                    {{ Hijri::Date('j F Y',$relpost->created_at) }}  هـ
+                                </p>
 
                                 <h6>
                                    {!! $relpost->post_summary !!}
